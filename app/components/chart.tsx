@@ -30,13 +30,13 @@ const ChartComponent: React.FC<ChartProps> = ({ chatResponse, inputChartType }) 
   useEffect(() => {
     if (chatResponse !== '') {
       try {
-
-        let dataArray = JSON.parse(chatResponse);
-        setInsight(dataArray.insight);
-        setCharttype(inputChartType);
-        setData(dataArray.chart.data);
-        setTitle('Chart Title');
-        console.log(dataArray);
+          let dataArray = JSON.parse(chatResponse);
+          setInsight(dataArray.insight);
+          setCharttype(inputChartType);
+          setData(dataArray.chart.data);
+          setTitle('Chart Title');
+          console.log(dataArray);
+        
       } catch (error) {
         console.error('Error parsing chatResponse:', error);
         console.error('chatResponse:', chatResponse);
@@ -51,11 +51,27 @@ const ChartComponent: React.FC<ChartProps> = ({ chatResponse, inputChartType }) 
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const
+        position: 'bottom' as const
       },
       title: {
-        display: true,
-        text: 'Chart.js Bar Chart'
+        display: false,
+        text: 'Chart.js Chart'
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 24 // Change x-axis text size
+          }
+        }
+      },
+      y: {
+        ticks: {
+          font: {
+            size: 16 // Change y-axis text size
+          }
+        }
       }
     }
   }
@@ -70,6 +86,29 @@ const ChartComponent: React.FC<ChartProps> = ({ chatResponse, inputChartType }) 
         return <Line data={data} options={options} />
       case "scatter":
         return <Scatter data={data} options={options} />
+      case "table":
+        const headers = data.labels;
+        const rows = data.datasets[0].data;
+        return (
+          <table className='min-w-full m-10 table-fixed divide-y divide-gray-200 '>
+            <thead>
+              <tr>
+                {headers.map((header: string, index: number) => (
+                  <th className="px-2 text-left text-xl font-medium text-gray-500 uppercase tracking-wider" key={index}>{header}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className=' divide-y divide-gray-400'>
+              {rows.map((row: number[], rowIndex: number) => (
+                <tr key={rowIndex}>
+                  {row.map((cell: number, cellIndex: number) => (
+                    <td className="px-2 py-2 whitespace-nowrap text-sm text-gray-200" key={cellIndex}>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        );
       default:
         return null;
     }
@@ -77,12 +116,16 @@ const ChartComponent: React.FC<ChartProps> = ({ chatResponse, inputChartType }) 
 
   return (
     <div>
-      <h1>{title}</h1>
+    {      /*<h1>{title}</h1>
       <p>{JSON.stringify(data)}</p>
-      <p>{charttype}</p>
+      <p>{charttype}</p>*/
+    }
+      <h1> {title} </h1>
       <p>{insight}</p>
       
-      {renderChart()}
+      <div className='m-10'>
+        {renderChart()}
+      </div>
     </div>
   )
 }

@@ -6,8 +6,7 @@ button{
     background: #374151;
     width: 200px;
     height: 50px;
-    margin-top: 1rem;
-    border-radius: 10%;
+    border-radius: 10px;
 
 }
 button:hover{
@@ -52,15 +51,20 @@ button:active{
 
 .llm-input{
     height: 30px;
-    width: 80%;
+    max-width: 400px;
     resize: none;
     vertical-align: center;
     margin-top: 1rem;
+    border-radius: 5px;
 }
 .llm-button{
     height: 30px;
     margin-bottom: 5px;
     margin-left: 10px;
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+    
 }
 
 .llm-prompter{
@@ -69,6 +73,8 @@ button:active{
     justify-content: center;
     align-items: center;
     gap: 10px;
+    width: 100%;
+
 }
 
 .table-type{
@@ -76,21 +82,17 @@ button:active{
     width: 150px;
     height: 30px;
     color: black;
-    border-radius: 10%;
+    border-radius: 5px;
 }
 
 .table-container{
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.user-ai-prompt{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: 15px;
     gap: 10px;
+    width: 100%;
 }
 
 .container-filters{
@@ -108,4 +110,18 @@ button:active{
     border-radius: 25px;
     margin-top: 150px;
     margin-bottom: 40px;
+}
+
+.specifics{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.user-ai-prompt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }

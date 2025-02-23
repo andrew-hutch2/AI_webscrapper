@@ -62,7 +62,7 @@ export default function Scraper(): JSX.Element {
   return (
     <div className="main-container">
       <div className="web-scrapper-container w-10/12 py-20">
-        <h1 className="text-4xl">Web Scraper</h1>
+        <h1 className="text-5xl">Web Scraper</h1>
         <div className="flex items-center mt-5 w-full justify-center gap-4">
           <input
             type="text"
@@ -71,24 +71,29 @@ export default function Scraper(): JSX.Element {
             onChange={(e) => setInputUrl(e.target.value)}
             className="rounded text-black w-2/5 h-8"
           />
-          <button className="h-8 w-40 mt-0" onClick={handleScrape}>Scrape Website</button>
+          <button className="h-8 w-40 rounded-lg mt-0" onClick={handleScrape}>Scrape Website</button>
         </div>
       </div>
 
-      <div className=" container-filters w-10/12 py-10 flex flex-col items-center my-10">
-        <h2 className="text-2xl">Prompt AI to manipulate data</h2>
+      <div className=" container-filters w-10/12 py-10 px-10 flex flex-col items-center my-10">
+        <h2 className="text-4xl">Prompt AI to manipulate data</h2>
         <div className="llm-prompter">
           <div className="table-container">
-            <label>Chart Type: </label>
-            <select className="table-type" onChange={(e)=>setType(e.target.value)}>
+            <label className="mt-3" htmlFor="table-type">Chart Type: </label>
+            <select id="table-type" className="table-type" onChange={(e)=>setType(e.target.value)}>
               <option defaultValue="bar">Bar</option>
+              <option value="table">Table</option>
               <option value="pie">Pie</option>
               <option value="line">Line</option>
               <option value="scatter">Scatter</option>
             </select>
           </div>
           <div className="user-ai-prompt">
-            <input value={chatbotWindow} onChange={(e)=>setChatbotWindow(e.target.value)} className="llm-input h-5 w-1/2 text-black rounded flex justify-start " placeholder="Ex: chart of discount %"></input> 
+            <div className="flex w-full flex-column justify-center">
+              <label className="mt-4 mr-2" htmlFor="llm-input"> Chart Specifications: </label>
+              <input id="llm-input" value={chatbotWindow} onChange={(e)=>setChatbotWindow(e.target.value)} className="llm-input h-5 w-1/2 text-black rounded flex justify-start " placeholder="Ex: chart of discount %"></input> 
+            </div>
+            
             <button className="llm-button h-8 w-40 mt-5" onClick={handleChatbot}>Prompt AI</button>
           </div>
         </div>

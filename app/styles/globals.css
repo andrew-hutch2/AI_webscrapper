@@ -33,23 +33,17 @@ button:active{
   width: 200px;
   height: 30px;
   margin-top: 1rem;
-  border-radius: 5%;
+  border-radius: 5px;
 }
 .form input{
   width: 100%;
-}
-
-h1{
-  font-size:36px;
 }
 
 .link{
   text-decoration: underline;
   color: blue;
 }
-h3{
-  font-size: 24px;
-}
+
 
 .description{
   /* background: lightgrey; */
