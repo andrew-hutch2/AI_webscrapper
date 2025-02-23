@@ -1,0 +1,28 @@
+
+nav{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 10%;
+    min-height: 100vh;
+    border-right: grey 1px solid;
+    }
+nav button{
+    background-color: grey;
+    width: 75px;
+    height: 30px;
+    border-radius: 15%;
+}
+nav button:hover{
+    background: white;
+    color: grey;
+}
+
+.logout{
+    width: 100px;
+    height: 30px;
+    margin-bottom: 1rem;
+}

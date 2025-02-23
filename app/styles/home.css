@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button{
+    background: #374151;
+    width: 200px;
+    height: 50px;
+    margin-top: 1rem;
+    border-radius: 10%;
+
+}
+button:hover{
+    color: #374151;
+    background: white;
+    
+}
+button:active{
+    transform: scale(.95);
+}
+
+.main-container{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #111827;
+    color: white;
+
+}
+
+
+.dropdown-button{
+    width: 100%;
+    border-radius: 0%;
+}
+
+.dropdown-button:active{
+    transform: scale(1);
+}
+
+.dropdown-container{
+    border-color: grey;
+    border-width: 1px;
+
+    padding: 0;
+    margin: 0;
+}
+
+
+.llm-input{
+    height: 30px;
+    width: 80%;
+    resize: none;
+    vertical-align: center;
+    margin-top: 1rem;
+}
+.llm-button{
+    height: 30px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+.llm-prompter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-type{
+    margin-top: 15px;
+    width: 150px;
+    height: 30px;
+    color: black;
+    border-radius: 10%;
+}
+
+.table-container{
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.user-ai-prompt{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-filters{
+    background-color: #1F2937;
+    border-radius: 25px;
+}
+
+
+.web-scrapper-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #1F2937;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    margin-top: 150px;
+    margin-bottom: 40px;
+}

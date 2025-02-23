@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+make nav element on the left side of screen and 20% of screen width
+*/
+.nav-main-container{
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+
+.login-input{
+  color:black;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  width: 50vh;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vh;
+  
+}
+button:active{
+  transform: scale(.95);
+}
+.form button{
+  background: grey;
+  width: 200px;
+  height: 30px;
+  margin-top: 1rem;
+  border-radius: 5%;
+}
+.form input{
+  width: 100%;
+}
+
+h1{
+  font-size:36px;
+}
+
+.link{
+  text-decoration: underline;
+  color: blue;
+}
+h3{
+  font-size: 24px;
+}
+
+.description{
+  /* background: lightgrey; */
+  min-height: 200px;
+  min-width: 200px;
+  padding: 3rem;
+  border-radius: 10%;
+  /* margin-bottom: auto; */
+}
+
+
+.loginbtn:hover{
+  background: white;
+  color: grey;
+}
