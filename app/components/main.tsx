@@ -6,9 +6,9 @@ import Chart from "./chart";
 
 export default function Scraper(): JSX.Element {
   const [inputUrl, setInputUrl] = useState<string>("");
-  const [data, setData] = useState("website data will be displayed here" as any);
+  const [data, setData] = useState("website data will be displayed here \nPlease wait for website data to appear before submitting to AI" as any);
   const [error, setError] = useState<string | null>(null);
-  const [dropdown, setDropdown] = useState(false);
+  const [dropdown, setDropdown] = useState(true);
   const [chatbotWindow, setChatbotWindow] = useState("");
   const [chatbotData, setChatbotData] = useState("" as any);
   const [type, setType] = useState("bar");
@@ -61,9 +61,9 @@ export default function Scraper(): JSX.Element {
 
   return (
     <div className="main-container">
-      <div className="web-scrapper-container w-10/12 py-20">
+      <div className="web-scrapper-container w-10/12 gap-5 py-20">
         <h1 className="text-5xl">Web Scraper</h1>
-        <div className="flex items-center mt-5 w-full justify-center gap-4">
+        <div className="flex items-center my-5 w-full justify-center gap-4">
           <input
             type="text"
             placeholder="Enter URL to scrape"
@@ -72,8 +72,20 @@ export default function Scraper(): JSX.Element {
             className="rounded text-black w-2/5 h-8"
           />
           <button className="h-8 w-40 rounded-lg mt-0" onClick={handleScrape}>Scrape Website</button>
+
+          
+        </div>
+        {error && <p style={{ color: "red" }}>{error}</p>}      
+        {/*container for button dropdown*/}
+        <div className="dropdown-container w-10/12 flex flex-col" >
+          <button className="bg-gray-900 dropdown-button text-white text-2xl rounded mt-0" onClick={() => setDropdown(!dropdown)}>{dropdown ? "Hide Scraped Content" : "Show Scraped Content"}</button>
+          {dropdown && <textarea value={data} onChange={(e)=>setData(e.target.value)} className="scraped-textarea w-full bg-gray-900 overflow-auto" >
+          </textarea>}
         </div>
       </div>
+
+
+    
 
       <div className=" container-filters w-10/12 py-10 px-10 flex flex-col items-center my-10">
         <h2 className="text-4xl">Prompt AI to manipulate data</h2>
@@ -98,24 +110,12 @@ export default function Scraper(): JSX.Element {
           </div>
         </div>
       </div>
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      
-     {/*container for button dropdown*/}
-      <div className="dropdown-container w-10/12 flex flex-col" >
-        <button className="bg-gray-900 dropdown-button text-white text-2xl rounded mt-0" onClick={() => setDropdown(!dropdown)}>Show Scraped Content</button>
-        {dropdown && <textarea value={data} onChange={(e)=>setData(e.target.value)} className=" w-full bg-gray-900 overflow-auto" style={{ height: "400px" }}>
-        </textarea>}
-      </div>
-
-      
       
       <div>
       <Chart chatResponse={chatbotData} inputChartType={type}/>
-      {//chatbotData && chatbotData
-      }
-
       </div>
+
+
       {/*extra space on bottom*/}
       <div className="my-40"></div>
     </div>

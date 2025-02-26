@@ -2,12 +2,15 @@ import React, {useState, useEffect} from 'react'
 import { Bar, Line, Pie, Scatter } from 'react-chartjs-2'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend, ArcElement } from 'chart.js'
 
+
 ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend, ArcElement)
+
 
 interface ChartProps {
   chatResponse: string
   inputChartType: string
 }
+
 
 const chartData = {
   labels: [],
@@ -21,9 +24,9 @@ const chartData = {
     }
   ]
 }
-  
+ 
 const ChartComponent: React.FC<ChartProps> = ({ chatResponse, inputChartType }) => {
-  const [insight, setInsight] = useState(""); 
+  const [insight, setInsight] = useState("");
   const [charttype, setCharttype] = useState("");
   const [data, setData] = useState(chartData);
   const [title, setTitle] = useState("Chart Title");
@@ -34,18 +37,16 @@ const ChartComponent: React.FC<ChartProps> = ({ chatResponse, inputChartType }) 
           setInsight(dataArray.insight);
           setCharttype(inputChartType);
           setData(dataArray.chart.data);
-          setTitle('Chart Title');
+          setTitle(dataArray.title);
           console.log(dataArray);
-        
+       
       } catch (error) {
         console.error('Error parsing chatResponse:', error);
         console.error('chatResponse:', chatResponse);
       }
     }
-    
-  }, [chatResponse, inputChartType])
-
-
+   
+  }, [chatResponse])
 
   const options = {
     responsive: true,
@@ -75,6 +76,7 @@ const ChartComponent: React.FC<ChartProps> = ({ chatResponse, inputChartType }) 
       }
     }
   }
+
 
   const renderChart = () => {
     switch (charttype.toLowerCase()) {
@@ -114,6 +116,7 @@ const ChartComponent: React.FC<ChartProps> = ({ chatResponse, inputChartType }) 
     }
   }
 
+
   return (
     <div>
     {      /*<h1>{title}</h1>
@@ -122,7 +125,7 @@ const ChartComponent: React.FC<ChartProps> = ({ chatResponse, inputChartType }) 
     }
       <h1> {title} </h1>
       <p>{insight}</p>
-      
+     
       <div className='m-10'>
         {renderChart()}
       </div>

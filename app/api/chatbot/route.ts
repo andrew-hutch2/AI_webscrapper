@@ -1,7 +1,3 @@
-
-
-
-
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
@@ -13,21 +9,77 @@ export async function POST(req: Request) {
     try {
         const body = await req.json();
         const { message, type } = body;
-        
-        //create system message
-        
-        let systemMessage = "You are getting website data an want to provide insight on this data" 
-                    + "create a json object in the first value will be named insight with any insight you have on the data"
-                    + "the chart will be this type " + type + "/n"
-                    + "the second value will be a chart.js json component that can be passed directly in a chart.js component of type" + type + "named chart"
-                    + "answer any question the user has about the data but in the insight but do not change from this format";
-        if (type == "table"){
-            systemMessage += "since the type is table still return in a standard chart.js json format outlined above. make labels the first row of the table and datasets[0].data the rest of the rows of the table";
-        }
+
         if (!message) {
             return NextResponse.json({ error: "Message is required" }, { status: 400 });
         }
-        
+
+
+        /*let systemMessage = "You are getting website data an want to provide insight on this data"
+                    + "create a json object in the first value will be named insight with any insight you have on the data"
+                    + "the chart will be this type " + type + "/n"
+                    + "the second value will be a chart.js json component that can be passed directly in a chart.js component of type" + type + "named chart"
+                    + "answer any question the user has about the data in the insight but do not change from this format or add any JSON objects in insight"
+        if (type == "table"){
+            systemMessage += "since the type is table still return in a standard chart.js json format outlined above. make labels the first row of the table and datasets[0].data the rest of the rows of the table";
+        }*/
+        let systemMessage = "You are getting website data and want to provide insight on this data. ";
+
+        if (type === "table") {
+            systemMessage += `Create a JSON object with the following structure:
+            {
+                "insight": "Your insight here",
+                "chart": {
+                "type": "table",
+                "title": "title goes here",
+                "data": {
+                    "labels": ["Category", "Details"],
+                    "datasets": [
+                    {
+                        "data": [
+                        ["Category1", "Detail1"],
+                        ["Category2", "Detail2"],
+                        ["Category3", "Detail3"]
+                        ]
+                    }
+                    ]
+                }
+                }
+            }
+            Ensure that the data is formatted correctly for a table. Answer any questions the user has about the data in the insight but do not change from this format.`;
+        } else {
+            systemMessage += `Create a JSON object with the following structure:
+            {
+                "insight": "Your insight here",
+                "chart": {
+                "type": "${type}",
+                "title": "Title goes here",
+                "data": {
+                    "labels": ["label1", "label2", "label3", "etc"],
+                    "datasets": [
+                    {
+                        "label": "Instances/Effects",
+                        "data": [30, 10, 50, 90],
+                        "backgroundColor": [
+                        "rgba(75, 192, 192, 0.6)",
+                        "rgba(255, 159, 64, 0.6)",
+                        "rgba(153, 102, 255, 0.6)",
+                        "rgba(255, 99, 132, 0.6)"
+                        ],
+                        "borderColor": [
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(255, 159, 64, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 99, 132, 1)"
+                        ],
+                        "borderWidth": 1
+                    }
+                    ]
+                },
+            }
+            Ensure that the data is formatted correctly for a Chart.js component of type ${type}. Answer any questions the user has about the data in the insight but do not change from this format.`;
+        }
+            
 
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
@@ -37,10 +89,11 @@ export async function POST(req: Request) {
                 { role: "user", content: message }
             ]
         });
-        console.log(completion.choices[0].message)
+
+        console.log(completion.choices[0].message);
 
         return NextResponse.json({ completion }, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ error: "Error generating completion" + error }, { status: 500 });
+        return NextResponse.json({ error: "Error generating completion: " + error }, { status: 500 });
     }
 }

@@ -34,6 +34,7 @@ button:active{
 .dropdown-button{
     width: 100%;
     border-radius: 0%;
+    background-color: #1F2937;
 }
 
 .dropdown-button:active{
@@ -41,16 +42,19 @@ button:active{
 }
 
 .dropdown-container{
-    border-color: grey;
-    border-width: 1px;
-
+    border-width: 1.5px;
     padding: 0;
     margin: 0;
+}
+
+.scraped-textarea{
+    min-height: 200px;
 }
 
 
 .llm-input{
     height: 30px;
+    min-width: 100px;
     max-width: 400px;
     resize: none;
     vertical-align: center;
@@ -92,7 +96,7 @@ button:active{
     align-items: center;
     margin-top: 15px;
     gap: 10px;
-    width: 100%;
+    min-width: 60%;
 }
 
 .container-filters{
@@ -123,5 +127,18 @@ button:active{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    min-width: 60%;
+}
+
+.table-head{
+    background-color: #1F2937;
+}
+
+
+.table-body{
+    background-color: #1F2937;
+}
+
+.color2{
+    background-color: #1F2937;
 }
