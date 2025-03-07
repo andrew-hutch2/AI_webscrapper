@@ -25,23 +25,18 @@ make nav element on the left side of screen and 20% of screen width
   margin-top: 15vh;
   
 }
-button:active{
-  transform: scale(.95);
-}
-.form button{
-  background: grey;
-  width: 200px;
-  height: 30px;
-  margin-top: 1rem;
-  border-radius: 5px;
-}
-.form input{
-  width: 100%;
-}
+
 
 .link{
   text-decoration: underline;
   color: blue;
+  
+}
+.link:hover{
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: none;
 }
 
 
@@ -54,8 +49,40 @@ button:active{
   /* margin-bottom: auto; */
 }
 
-
+/*
 .loginbtn:hover{
   background: white;
   color: grey;
+}*/
+button:active{
+  transform: scale(.95);
+}
+.form button{
+
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+.form input{
+  width: 100%;
+}
+
+.loginbtn {
+  width: 200px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: #1F2937;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  transition: all ease 0.1s;
+  box-shadow: 0px 5px 0px 0px #374151;
+}
+
+.loginbtn:active {
+  transform: translateY(5px);
+  box-shadow: 0px 0px 0px 0px #1F2937;
 }

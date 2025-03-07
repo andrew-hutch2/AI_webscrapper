@@ -9,11 +9,7 @@ button{
     border-radius: 10px;
 
 }
-button:hover{
-    color: #374151;
-    background: white;
-    
-}
+
 button:active{
     transform: scale(.95);
 }

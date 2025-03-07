@@ -13,16 +13,7 @@ export async function POST(req: Request) {
         if (!message) {
             return NextResponse.json({ error: "Message is required" }, { status: 400 });
         }
-
-
-        /*let systemMessage = "You are getting website data an want to provide insight on this data"
-                    + "create a json object in the first value will be named insight with any insight you have on the data"
-                    + "the chart will be this type " + type + "/n"
-                    + "the second value will be a chart.js json component that can be passed directly in a chart.js component of type" + type + "named chart"
-                    + "answer any question the user has about the data in the insight but do not change from this format or add any JSON objects in insight"
-        if (type == "table"){
-            systemMessage += "since the type is table still return in a standard chart.js json format outlined above. make labels the first row of the table and datasets[0].data the rest of the rows of the table";
-        }*/
+        
         let systemMessage = "You are getting website data and want to provide insight on this data. ";
 
         if (type === "table") {

@@ -10,8 +10,8 @@ const Login = () => {
     islogin ? (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
       <div className='description text-center'>
-        <h1 className="text-3xl font-bold mb-4 text-5xl">Log In</h1>
-        <p className="text-center">this is a lengthy description of the website</p>
+        <h1 className="text-3xl font-bold mb-8 text-5xl">Log In</h1>
+        <p className="text-center text-gray-300 text-lg max-w-xl">A powerful web scraping and data visualization tool that helps you extract information from websites and create beautiful charts. Transform raw website data into meaningful insights with AI-powered analysis.</p>
       </div>
       <form className='form'>
           <label htmlFor="email">Email:</label>
@@ -27,14 +27,15 @@ const Login = () => {
     (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
       <div className=' text-center description'>
-        <h1 className="text-3xl font-bold mb-4 text-5xl">Sign Up</h1>
-        <p className="text-center">this is a lengthy description of the website </p>
+        <h1 className="text-3xl font-bold mb-8 text-5xl">Sign Up</h1>
+        <p className="text-center text-gray-300 text-lg max-w-xl">A powerful web scraping and data visualization tool that helps you extract information from websites and create beautiful charts. Transform raw website data into meaningful insights with AI-powered analysis.</p>
       </div>
       
       <form className='form'>
           
           <label htmlFor="email">Email:</label>
           <input className="login-input" id="email" name="email" type="email" required />
+
           <label htmlFor="password">Password:</label>
           <input className="login-input" id="password" name="password" type="password" required />
           <button className="loginbtn" formAction={signup}>Sign Up</button>
