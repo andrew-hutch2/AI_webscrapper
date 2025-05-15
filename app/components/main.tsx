@@ -201,7 +201,7 @@ export default function Scraper(): JSX.Element {
             data: result.completion.choices[0].message.content,
             chartType: type,
             url: inputUrl,
-            websiteData: data
+            website_data: data
           }),
         });
 
@@ -228,7 +228,7 @@ export default function Scraper(): JSX.Element {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gray-950 text-white">
+    <div className="min-h-screen w-full overflow-auto bg-gray-950 text-white">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">

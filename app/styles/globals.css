@@ -41,19 +41,13 @@ make nav element on the left side of screen and 20% of screen width
 
 
 .description{
-  /* background: lightgrey; */
   min-height: 200px;
   min-width: 200px;
   padding: 3rem;
   border-radius: 10%;
-  /* margin-bottom: auto; */
 }
 
-/*
-.loginbtn:hover{
-  background: white;
-  color: grey;
-}*/
+
 button:active{
   transform: scale(.95);
 }
